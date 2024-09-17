@@ -1,80 +1,23 @@
-# GitHub Actions and JFrog Integration with OIDC Example
+### JFrog Github OIDC Demo
+#### 1 JFrog 配置
+Manage Integration --> OIDC Integration  
+新建 OpenID Connect
+![alt text](images/openIDConnect.png)
 
-This example repository demonstrates how to seamlessly integrate GitHub Actions with JFrog, leveraging OpenID Connect (OIDC) for secure and authenticated interactions. This integration ensures a streamlined and automated workflow for managing artifacts with JFrog Artifactory in your GitHub repositories.
+添加 Identity Mappings
 
-## Table of Contents
+![alt text](images/identityMappings.png)
 
-- [Introduction](#introduction)
-- [Prerequisites](#prerequisites)
-- [Getting Started](#getting-started)
-- [Workflow Overview](#workflow-overview)
-- [Configuration](#configuration)
-- [Secrets](#secrets)
-- [References](#references)
-- [Contributing](#contributing)
-- [License](#license)
+#### 2 code
+.github 下配置 Github Action pipeline yaml 文件
 
-## Introduction
+将 JFrog 生成的 代码片段 copy 至 pipeline yaml 文件中
+![alt text](images/snippet.png)
 
-This example illustrates how to set up GitHub Actions workflows to interact with JFrog Artifactory using OpenID Connect (OIDC) for authentication. GitHub Actions provide a powerful and automated way to build, test, and deploy your applications, and integrating JFrog adds efficient artifact management to the process.
+#### 3 Github Action 运行
+Github Actions 中运行
 
-## Prerequisites
+![alt text](images/githubActions.png)
 
-Before you begin, make sure you have the following prerequisites:
+运行成功，npm demo 示例成功通过 JFrog 依赖下载外部组件并且 build 部署到 npm local 私有制品仓库中。
 
-- A GitHub account
-- A JFrog Artifactory account
-- OIDC configured in JFrog Artifactory (see documentation)
-
-## Getting Started
-
-1. Clone this repository:
-
-```
-git clone https://github.com/yourusername/github-actions-jfrog-oidc-example.git
-cd github-actions-jfrog-oidc-example
-```
-
-2. Customize the GitHub Actions workflows in the `.github/workflows` directory to suit your project's needs.
-
-3. Update the configuration files and scripts as required for your specific use case.
-
-4. Commit your changes and push them to your GitHub repository.
-
-5. Check the Actions tab on your GitHub repository to see the workflow in action.
-
-## Workflow Overview
-
-The workflow in this example includes the following steps:
-
-1. **Build**: Build your project using GitHub Actions.
-2. **Authenticate with JFrog**: Authenticate with JFrog Artifactory using OIDC.
-3. **Publish Artifact**: Publish the built artifact to JFrog Artifactory.
-
-## Configuration
-
-Adjust the configuration files to match your project structure and requirements:
-
-- `.github/workflows/main.yml`: GitHub Actions workflow configuration.
-
-## Secrets
-
-These secrets are used to authenticate and interact with JFrog Artifactory securely.
-
-## References
-
-- [GitHub Actions Documentation](https://docs.github.com/en/actions)
-- [JFrog Artifactory OIDC Documentation](https://jfrog.com/help/r/jfrog-platform-administration-documentation/github-actions-oidc-integration-workflow)
-- [OpenID Connect (OIDC) Documentation](https://openid.net/connect/)
-
-## Contributing
-
-Feel free to contribute to this example by creating issues or pull requests. Your feedback and contributions are highly appreciated!
-
-## License
-
-This example repository is licensed under the [MIT License](LICENSE).
-
----
-
-**Disclaimer**: This example is for educational and illustrative purposes. Ensure you adhere to the terms and conditions of GitHub and JFrog when using their services.

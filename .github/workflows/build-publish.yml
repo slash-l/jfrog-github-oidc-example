@@ -2,7 +2,6 @@ name: "JFrog-GitHub NPM Publish OIDC Integration"
 on: push
 
 # This is required as per
-# https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-cloud-providers#adding-permissions-settings
 permissions:
   id-token: write
 
@@ -28,8 +27,8 @@ jobs:
          env:  
            JF_URL: 'https://demo.jfrogchina.com'
          with:
-           oidc-provider-name: ${{OIDC_PROVIDER }}
-           oidc-audience: ${{ OIDC_AUDIENCE }}
+           oidc-provider-name: ${{ env.OIDC_PROVIDER }}
+           oidc-audience: ${{ env.OIDC_AUDIENCE }}
 
        - name: Set CLI Config
          run: jf npm-config --global=true --repo-resolve=$PLATFORM_REPO --repo-deploy=$PLATFORM_REPO
